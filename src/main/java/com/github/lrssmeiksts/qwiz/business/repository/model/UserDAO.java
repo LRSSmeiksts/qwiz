@@ -27,18 +27,18 @@ public class UserDAO {
     private Long id;
 
     @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name="leaderboard_id", referencedColumnName = "leaderboard_id")
+    @JoinColumn(name="leaderboard_id", referencedColumnName = "leaderboard_id", unique = true)
     private LeaderboardDAO leaderboardId;
 
     //quizzes
 
     //quiz_results
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     @NotEmpty
     private String email;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     @NotEmpty
     private String username;
 
@@ -46,6 +46,6 @@ public class UserDAO {
     private String pictureUrl;
 
     @NotEmpty
-    @Column(name = "role")
+    @Column(name = "role", nullable = false)
     private String role;
 }

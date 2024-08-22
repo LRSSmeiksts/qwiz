@@ -11,5 +11,5 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
     UserDAO userToUserDAO(User user);
 
-    User userDAOToUSer(UserDAO userDAO);
+    User userDAOToUser(UserDAO userDAO);
 }

@@ -19,14 +19,14 @@ import lombok.NoArgsConstructor;
 public class LeaderboardDAO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="leaderboard_id")
+    @Column(name="leaderboard_id", nullable = false)
     private Long id;
 
-    @Column(name="total_score")
+    @Column(name="total_score", nullable = false)
     @NotNull
     private int totalScore;
 
-    @Column(name="quizzes_guessed")
+    @Column(name="quizzes_guessed", nullable = false)
     @NotNull
     private int quizzesGuessed;
 
