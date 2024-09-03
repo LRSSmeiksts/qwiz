@@ -1,18 +1,13 @@
 package com.github.lrssmeiksts.qwiz.business.repository.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,7 +25,8 @@ public class UserDAO {
     @JoinColumn(name="leaderboard_id", referencedColumnName = "leaderboard_id", unique = true)
     private LeaderboardDAO leaderboardId;
 
-    //quizzes
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "userId", fetch = FetchType.LAZY)
+    private List<QuizDAO> quizIds;
 
     //quiz_results
 
