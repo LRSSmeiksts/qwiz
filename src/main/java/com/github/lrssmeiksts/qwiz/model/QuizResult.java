@@ -9,25 +9,34 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Leaderboard {
+public class QuizResult {
 
-    @Schema(hidden = true, description = "Unique leaderboard id", example = "1")
+    @Schema(hidden = true, description = "Unique quizResults id", example = "1")
     @NotNull
     @Min(value = 1, message = DescriptionVariables.MODEL_ID_MIN)
     @Max(value = Long.MAX_VALUE, message = DescriptionVariables.MODEL_ID_MAX)
     private Long id;
 
-    @Schema(description = "Total score of all quizzes", example = "1")
+    @Schema(description = "if of the user", example = "1")
+    @NotNull
+    private Long userId;
+
+    @Schema(description = "id of the quiz", example = "1")
+    @NotNull
+    private Long quizId;
+
+    @Schema(description = "Score gotten on the quiz", example = "1")
     @NotNull
     @Min(value = 0)
-    @Max(value = Integer.MAX_VALUE)
-    private int totalScore;
+    @Max(value = 5, message = "score must not be higher than 5")
+    private int score;
 
-    @Schema(description = "Total guessed quizzes", example = "1")
+    @Schema(description = "Quiz guess date")
     @NotNull
-    private int quizzesGuessed;
+    private LocalDate guessDate;
 }

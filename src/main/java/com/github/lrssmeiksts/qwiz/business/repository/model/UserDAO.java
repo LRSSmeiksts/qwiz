@@ -28,7 +28,8 @@ public class UserDAO {
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "userId", fetch = FetchType.LAZY)
     private List<QuizDAO> quizIds;
 
-    //quiz_results
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "userId", fetch = FetchType.LAZY)
+    private List<QuizResultDAO> quizResultIds;
 
     @Column(name = "email", nullable = false)
     @NotEmpty

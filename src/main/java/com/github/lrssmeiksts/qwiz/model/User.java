@@ -23,12 +23,15 @@ public class User {
 
     // leaderboard id
     @Schema(description = "User's leaderboard id")
+    @NotNull
     private Long leaderboardId;
 
     @Schema(description = "User's quiz ids")
+    @NotNull
     private List<Long> quizIds;
 
-    // quiz result id's
+    @Schema(description = "quizResult ids")
+    private List<Long> quizResultIds;
 
     @Schema( description = "Email of the user",example = "example@example.com")
     @NotEmpty
