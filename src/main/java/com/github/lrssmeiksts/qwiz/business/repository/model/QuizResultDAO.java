@@ -24,7 +24,7 @@ public class QuizResultDAO {
     private QuizDAO quizId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id",unique = true)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserDAO userId;
 
     @Column(name = "score", nullable = false)

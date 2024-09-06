@@ -21,7 +21,7 @@ insert into quiz(quiz_id, title, answer, point_value, created_at, user_id, categ
 insert into quiz(quiz_id, title, answer, point_value, created_at, user_id, category_id) values(6,'quiz6','answer6',4,'2015-12-23',4,3);
 insert into quiz(quiz_id, title, answer, point_value, created_at, user_id, category_id) values(7,'quiz7','answer7',5,'2018-12-23',4,2);
 
-insert into quiz_result(quiz_result_id, score, guess_date, quiz_id, user_id) values(1,2,'2023-02-03',1,5);
+insert into quiz_result(quiz_result_id, score, guess_date, quiz_id, user_id) values(1,2,'2023-02-03',1,2);
 insert into quiz_result(quiz_result_id, score, guess_date, quiz_id, user_id) values(2,2,'2023-03-03',2,4);
 insert into quiz_result(quiz_result_id, score, guess_date, quiz_id, user_id) values(3,2,'2023-04-03',3,3);
 insert into quiz_result(quiz_result_id, score, guess_date, quiz_id, user_id) values(4,2,'2023-05-03',4,2);
