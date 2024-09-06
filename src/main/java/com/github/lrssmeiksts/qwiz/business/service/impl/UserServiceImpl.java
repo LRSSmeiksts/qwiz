@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserByid(Long id) {
+    public Optional<User> getUserById(Long id) {
         Optional<User> userById = userRepository.findById(id)
                 .flatMap(user -> Optional.ofNullable(userMapper.userDAOToUser(user)));
         log.info("User with ID {} is {}", id, userById);

@@ -23,11 +23,9 @@ public class User {
 
     // leaderboard id
     @Schema(description = "User's leaderboard id")
-    @NotNull
     private Long leaderboardId;
 
     @Schema(description = "User's quiz ids")
-    @NotNull
     private List<Long> quizIds;
 
     @Schema(description = "quizResult ids")
@@ -47,7 +45,6 @@ public class User {
     private String pictureUrl;
 
     @Schema(description = "Role of the user", example = "user")
-    @NotEmpty
     @Size(min = 1, max = 5, message = "role must be between 1 and 5 characters")
     private String role;
 }

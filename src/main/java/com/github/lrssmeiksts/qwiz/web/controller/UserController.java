@@ -30,6 +30,8 @@ public class UserController {
         this.userService = userService;
     }
 
+    //create user
+
     @Operation(description = "finds all users",
     summary ="Returns list of users")
     @ApiResponses(value = {
