@@ -2,7 +2,6 @@ package com.github.lrssmeiksts.qwiz.web.controller;
 
 import com.github.lrssmeiksts.qwiz.business.service.UserService;
 import com.github.lrssmeiksts.qwiz.model.User;
-import com.github.lrssmeiksts.qwiz.swagger.DescriptionVariables;
 import com.github.lrssmeiksts.qwiz.swagger.HTMLResponseMessages;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.HTML;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -32,8 +32,6 @@ public class UserController {
     public UserController(UserService userService){
         this.userService = userService;
     }
-
-    //create user
 
     @Operation(description = "finds all users",
     summary ="Returns list of users")
@@ -82,5 +80,26 @@ public class UserController {
 
         User savedUser = userService.createUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+    @Operation(description = "Gets user by id")
+    @ApiResponses(value={@ApiResponse(responseCode = "200", description = HTMLResponseMessages.HTTP_200,content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+    }),
+            @ApiResponse(responseCode = "500", description = HTMLResponseMessages.HTTP_500, content = @Content),
+            @ApiResponse(responseCode = "404", description = HTMLResponseMessages.HTTP_404, content = @Content)
+
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@NonNull @PathVariable Long id){
+        log.info("Attempting to find User with ID: {}", id);
+        Optional<User> optUser = (userService.getUserById(id));
+        if(optUser.isEmpty()){
+            log.warn("User with ID {} is not found", id);
+        }
+        else{
+            log.debug("User with ID {} is found: {}", id, optUser);
+        }
+        return optUser.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

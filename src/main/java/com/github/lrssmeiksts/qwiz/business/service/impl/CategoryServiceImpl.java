@@ -1,8 +1,6 @@
 package com.github.lrssmeiksts.qwiz.business.service.impl;
 
 import com.github.lrssmeiksts.qwiz.business.repository.CategoryRepository;
-import com.github.lrssmeiksts.qwiz.business.service.CategoryService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CategoryServiceImpl {
