@@ -16,7 +16,6 @@ import java.util.List;
 public class User {
 
     @Schema(hidden = true, description = "Unique user id", example = "1")
-    @NotNull
     @Min(value = 1, message = DescriptionVariables.MODEL_ID_MIN)
     @Max(value = Long.MAX_VALUE, message = DescriptionVariables.MODEL_ID_MAX)
     private Long id;
