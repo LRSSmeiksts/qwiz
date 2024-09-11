@@ -24,4 +24,10 @@ public class GlobalExceptionHandler {
         log.error("Failed to save user to to persistence issue", e);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
     }
+
+    @ExceptionHandler(InvalidIdException.class)
+    public ResponseEntity<String> handleInvalidIdException(InvalidIdException e){
+        log.warn("Failed to find object with ID provided", e);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
 }
